@@ -1,0 +1,14 @@
+@use "./components/card";
+@use "./pages/start";
+
+$breakpoints: (
+    "zero": 0px,
+    "mobile": 600px,
+    "tablet": 900px,
+    "desktop": 1200px
+);
+
+body {
+    height: 100vh;
+    background-color: #303131
+}

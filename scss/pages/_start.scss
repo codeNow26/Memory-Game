@@ -1,0 +1,23 @@
+@use "../abstract/mixins" as mixin;
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-screen {
+    @include mixin.flex-center;
+    color: white;
+    min-height: 100vh;
+
+    h1 {
+        font-size: 140px;
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 48px;
+        margin: 0;
+    }
+}
