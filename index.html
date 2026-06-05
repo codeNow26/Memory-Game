@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <section id="start-screen" class="start-screen d-none">
+    <section id="start-screen" class="start-screen">
         <div class="start-screen-content">
             <h2>It´s play time.</h2>
             <h1 id="h1_hallo">Ready to play?</h1>
@@ -36,7 +36,7 @@
 
 
 
-    <section id="settings-screen" class="settings-screen">
+    <section id="settings-screen" class="settings-screen d-none">
         <div class="settings-content">
 
             <div class="settings-left">
@@ -74,29 +74,32 @@
                         <input type="radio" name="player"> <span>Orange</span>
                     </label>
                 </div>
-            </div>
 
-            <div class="category">
-                <div class="category-title">
-                    <img class="category-icon" src="./src/images/icons/style.png">
-                    <h2>Board Size</h2>
+
+                <div class="category">
+                    <div class="category-title">
+                        <img class="category-icon" src="./src/images/icons/style.png">
+                        <h2>Board Size</h2>
+                    </div>
+                    <label class="radio-option">
+                        <input type="radio" name="size"> <span>16 cards</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="size"> <span>24 cards</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="size"> <span>36 cards</span>
+                    </label>
                 </div>
-                <label class="radio-option">
-                    <input type="radio" name="size"> <span>16 cards</span>
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="size"> <span>24 cards</span>
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="size"> <span>36 cards</span>
-                </label>
             </div>
-
 
             <div class="settings-right">
+                <div class="settings-right-wrapper">
+                    <img src="./src/images/themes/Theme Visual Code.png" alt="Visual Code Theme">
 
+                    <div class="selection-overview"></div>
+                </div>
             </div>
-        </div>
     </section>
 
 
@@ -106,16 +109,35 @@
 
 
 
-    <section id="game-screen" class="d-none">
-        <section id="field">
-            <button class="card">
-                <div class="card__inner">
-                    <div class="card__face"></div>
-                    <div class="card__face card__face--back"></div>
+    <section id="game-screen" class="game-screen d-none">
+
+        <div class="game-header">
+            <div class="game-header__left">
+                <div>
+                    <span id="blue-score" class="game-header__score game-header__score--blue">Blue: 0</span>
+                    <span id="orange-score" class="game-header__score game-header__score--orange">Orange: 0</span>
                 </div>
 
-            </button>
-        </section>
+            </div>
+
+            <div class="game-header__center">Current player: <span id="current-player"></span></div>
+            <div class="game-header__right">
+                <div class="game-header__right-wrapper">
+                    <img src="./src/images/icons/exit.png" alt="Exit-Icon">
+                    <span>Exit Game</span>
+                </div>
+            </div>
+        </div>
+        <div class="field-wrapper">
+            <section id="field" class="field">
+                <button class="card">
+                    <div class="card__inner">
+                        <div class="card__face"></div>
+                        <div class="card__face card__face--back"></div>
+                    </div>
+        </div>
+        </button>
+    </section>
     </section>
 
     <section id="game-over-screen" class="d-none">

@@ -1,15 +1,16 @@
 import '../scss/main.scss';
+import { initGame } from './script';
 
-init()
+initGame();
 
-function init() {
-const fieldRef = document.getElementById('field')
+const fieldRef = document.getElementById('field');
+
 if (fieldRef) {
     fieldRef.addEventListener("click", e => {
-        const card = (e.target as HTMLElement).closest(".card") as HTMLButtonElement // der nächstbeste der die class "card" hat, wird benutzt
+        const card = (e.target as HTMLElement).closest(".card") as HTMLButtonElement;
+
         if (card) {
-            card.classList.toggle("is-flipped")
+            card.classList.toggle("is-flipped");
         }
-    })
-}
+    });
 }

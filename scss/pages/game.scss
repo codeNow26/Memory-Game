@@ -1,0 +1,75 @@
+@use "../abstract/mixins" as mixin;
+
+body {
+    margin: 0;
+    background-color: #303131;
+}
+
+.game-screen {
+    display: flex;
+    flex-direction: column;
+    color: white;
+
+    min-height: 100vh;
+    margin: 41px 112px;
+}
+
+.field-wrapper {
+    @include mixin.flex-center;
+    flex: 1;
+}
+
+.field {
+    display: grid;
+    max-width: 1200px;
+    grid-template-columns: repeat(4, 120px);
+    grid-template-rows: repeat(4, 120px);
+    gap: 16px;
+    margin: 0 auto;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+    &__left {
+        @include mixin.flex-center;
+        gap: 20px;
+        background-color: #86E9D633;
+        padding: 10px 40px;
+    }
+
+    &__score {
+        font-size: 24px;
+    }
+
+    &__score--blue {
+        color: #2BB1FF;
+    }
+
+    &__score--orange {
+        color: #F58E39;
+    }
+
+    &__center {
+        margin-top: 30px;
+        font-size: 26px;
+    }
+
+    &__right {
+        @include mixin.flex-center;
+        gap: 20px;
+        background-color: #86E9D633;
+        padding: 10px 20px;
+        font-size: 24px;
+        border: 1px solid #4DD5BC;
+    }
+
+
+    &__right-wrapper {
+        @include mixin.flex-center;
+        gap: 10px;
+    }
+}

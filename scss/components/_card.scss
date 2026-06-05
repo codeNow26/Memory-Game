@@ -1,7 +1,8 @@
 .card {
-    height: 100px;
+    height: 120px;
     aspect-ratio: 1/1;
     background-color: transparent;
+    padding: 0;
     border: none;
 
     &__inner {
@@ -15,12 +16,16 @@
     &__face {
         position: absolute;
         inset: 0;
-        background-color: black;
+        background: url("/src/images/card-themes/code-vibe-back.png");
+        background-size: cover;
+        background-position: center;
         backface-visibility: hidden;
 
         &--back {
             transform: rotateY(180deg);
-             background-color: rgb(134, 39, 114);
+             background: url("/src/images/card-themes/code_card1.png");
+             background-size: cover;
+             background-position: center;
         }
     }
 

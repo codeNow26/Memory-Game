@@ -1,6 +1,7 @@
 @use "./components/card";
 @use "./pages/start";
 @use "./pages/settings";
+@use "./pages/game.scss";
 
 $breakpoints: (
     "zero": 0px,
