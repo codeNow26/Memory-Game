@@ -1,5 +1,6 @@
 @use "./components/card";
 @use "./pages/start";
+@use "./pages/settings";
 
 $breakpoints: (
     "zero": 0px,
@@ -10,5 +11,8 @@ $breakpoints: (
 
 body {
     height: 100vh;
-    background-color: #303131
+}
+
+.d-none {
+    display: none;
 }

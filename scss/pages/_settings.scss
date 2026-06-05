@@ -1,0 +1,70 @@
+.settings-screen {
+    margin: 114px 170px;
+
+    h1 {
+        font-size: 54px;
+        margin-block-start: 0;
+        margin-block-end: -10px;
+    }
+
+    .settings-underline {
+        margin-left: -30px;
+    }
+
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    &:hover::after {
+        content: "";
+        width: 20px;
+        height: 20px;
+        background-image: url("/src/images/icons/category-hover-line.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+
+    input {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 3px solid #333;
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+    }
+
+    input:hover,
+    input:checked {
+        border: 2px solid #333;
+    }
+
+    input:hover::after,
+    input:checked::after {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #333;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
