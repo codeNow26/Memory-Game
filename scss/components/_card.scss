@@ -4,6 +4,7 @@
     background-color: transparent;
     padding: 0;
     border: none;
+    cursor: pointer;
 
     &__inner {
         position: relative;
@@ -16,14 +17,14 @@
     &__face {
         position: absolute;
         inset: 0;
-        background: url("/src/images/card-themes/code-vibe-back.png");
+        background: url("/src/images/card-themes/Coding-Theme/code-vibe-back.png");
         background-size: cover;
         background-position: center;
         backface-visibility: hidden;
 
         &--back {
             transform: rotateY(180deg);
-             background: url("/src/images/card-themes/code_card1.png");
+             background: url("/src/images/card-themes/Coding-Theme/code_card1.png");
              background-size: cover;
              background-position: center;
         }

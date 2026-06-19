@@ -37,29 +37,30 @@
 
 
     <section id="settings-screen" class="settings-screen d-none">
+        <h1>Settings</h1>
+        <img class="settings-underline" src="./src/images/Line 3.png">
         <div class="settings-content">
-
             <div class="settings-left">
-                <h1>Settings</h1>
-                <img class="settings-underline" src="./src/images/Line 3.png">
 
                 <div class="category">
                     <div class="category-title">
                         <img class="category-icon" src="./src/images/icons/palette.png">
                         <h2>Game themes</h2>
                     </div>
-                    <label class="radio-option">
-                        <input type="radio" name="theme"> <span>Code vibes theme</span>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="theme"> <span>Gaming theme</span>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="theme"> <span>DA Projects theme</span>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="theme"> <span>Foods theme</span>
-                    </label>
+                    <div class="category__radio-wrapper">
+                        <label class="radio-option">
+                            <input type="radio" name="theme" checked> <span>Code vibes theme</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="theme"> <span>Gaming theme</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="theme"> <span>DA Projects theme</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="theme"> <span>Foods theme</span>
+                        </label>
+                    </div>
                 </div>
 
                 <div class="category">
@@ -67,12 +68,14 @@
                         <img class="category-icon" src="./src/images/icons/chess_pawn.png">
                         <h2>Choose Player</h2>
                     </div>
-                    <label class="radio-option">
-                        <input type="radio" name="player"> <span>Blue</span>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="player"> <span>Orange</span>
-                    </label>
+                    <div class="category__radio-wrapper">
+                        <label class="radio-option">
+                            <input type="radio" name="player"> <span>Blue</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="player"> <span>Orange</span>
+                        </label>
+                    </div>
                 </div>
 
 
@@ -81,23 +84,39 @@
                         <img class="category-icon" src="./src/images/icons/style.png">
                         <h2>Board Size</h2>
                     </div>
-                    <label class="radio-option">
-                        <input type="radio" name="size"> <span>16 cards</span>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="size"> <span>24 cards</span>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="size"> <span>36 cards</span>
-                    </label>
+                    <div class="category__radio-wrapper">
+                        <label class="radio-option">
+                            <input type="radio" name="board"> <span>16 cards</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="board"> <span>24 cards</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="board"> <span>36 cards</span>
+                        </label>
+                    </div>
                 </div>
             </div>
 
             <div class="settings-right">
                 <div class="settings-right-wrapper">
-                    <img src="./src/images/themes/Theme Visual Code.png" alt="Visual Code Theme">
-
-                    <div class="selection-overview"></div>
+                    <div class="theme-preview">
+                        <img class="active" src="./src/images/themes/Theme Visual Code.png" alt="Visual Code Theme">
+                        <img src="./src/images/themes/Theme Visual Gaming.png" alt="Gaming Theme">
+                        <img src="./src/images/themes/Theme Visual DA.png" alt="DA-Theme">
+                        <img src="./src/images/themes/Theme Visual Foods.png" alt="Foods Theme">
+                    </div>
+                    <div class="selection-overview">
+                        <span id="theme" name="theme">Game theme</span>
+                        <div class="selection-overview__divider"></div>
+                        <span id="player" name="player">Player</span>
+                        <div class="selection-overview__divider"></div>
+                        <span id="board" name="board">Board size</span>
+                        <button id="start-game-btn" class="selection-overview__start-game-btn">
+                            <img class="start-icon" src="./src/images/icons/smart_display.png">
+                            <span>Start</span>
+                        </button>
+                    </div>
                 </div>
             </div>
     </section>
@@ -110,33 +129,34 @@
 
 
     <section id="game-screen" class="game-screen d-none">
-
-        <div class="game-header">
-            <div class="game-header__left">
-                <div>
-                    <span id="blue-score" class="game-header__score game-header__score--blue">Blue: 0</span>
-                    <span id="orange-score" class="game-header__score game-header__score--orange">Orange: 0</span>
-                </div>
-
-            </div>
-
-            <div class="game-header__center">Current player: <span id="current-player"></span></div>
-            <div class="game-header__right">
-                <div class="game-header__right-wrapper">
-                    <img src="./src/images/icons/exit.png" alt="Exit-Icon">
-                    <span>Exit Game</span>
-                </div>
-            </div>
-        </div>
-        <div class="field-wrapper">
-            <section id="field" class="field">
-                <button class="card">
-                    <div class="card__inner">
-                        <div class="card__face"></div>
-                        <div class="card__face card__face--back"></div>
+        <div class="game-wrapper">
+            <div class="game-header">
+                <div class="game-header__left">
+                    <div>
+                        <span id="blue-score" class="game-header__score game-header__score--blue">Blue: 0</span>
+                        <span id="orange-score" class="game-header__score game-header__score--orange">Orange: 0</span>
                     </div>
+
+                </div>
+
+                <div class="game-header__center">Current player: <span id="current-player"></span></div>
+                <div class="game-header__right">
+                    <div class="game-header__right-wrapper">
+                        <img src="./src/images/icons/exit.png" alt="Exit-Icon">
+                        <span>Exit Game</span>
+                    </div>
+                </div>
+            </div>
+            <div class="field-wrapper">
+                <section id="field" class="field">
+                    <button class="card">
+                        <div class="card__inner">
+                            <div class="card__face"></div>
+                            <div class="card__face card__face--back"></div>
+                        </div>
+            </div>
+            </button>
         </div>
-        </button>
     </section>
     </section>
 

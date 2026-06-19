@@ -2,16 +2,19 @@
 
 body {
     margin: 0;
-    background-color: #303131;
+
+}
+
+.game-wrapper {
+    min-height: 100vh;
+    margin: 0px 112px 41px 112px;
+        display: flex;
+    flex-direction: column;
 }
 
 .game-screen {
-    display: flex;
-    flex-direction: column;
-    color: white;
 
-    min-height: 100vh;
-    margin: 41px 112px;
+    background-color: #303131;
 }
 
 .field-wrapper {
