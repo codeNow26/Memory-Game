@@ -1,3 +1,24 @@
+let codingCards = [
+    "src/images/card-themes/Coding-Theme/Coding (1).png",
+    "src/images/card-themes/Coding-Theme/Coding (2).png",
+    "src/images/card-themes/Coding-Theme/Coding (3).png",
+    "src/images/card-themes/Coding-Theme/Coding (4).png",
+    "src/images/card-themes/Coding-Theme/Coding (5).png",
+    "src/images/card-themes/Coding-Theme/Coding (6).png",
+    "src/images/card-themes/Coding-Theme/Coding (7).png",
+    "src/images/card-themes/Coding-Theme/Coding (8).png",
+    "src/images/card-themes/Coding-Theme/Coding (9).png",
+    "src/images/card-themes/Coding-Theme/Coding (10).png",
+    "src/images/card-themes/Coding-Theme/Coding (11).png",
+    "src/images/card-themes/Coding-Theme/Coding (12).png",
+    "src/images/card-themes/Coding-Theme/Coding (13).png",
+    "src/images/card-themes/Coding-Theme/Coding (14).png",
+    "src/images/card-themes/Coding-Theme/Coding (15).png",
+    "src/images/card-themes/Coding-Theme/Coding (16).png",
+    "src/images/card-themes/Coding-Theme/Coding (17).png",
+    "src/images/card-themes/Coding-Theme/Coding (18).png",
+]
+
 document.getElementById("start-btn")?.addEventListener("click", () => {
     document.getElementById("start-screen")?.classList.add("d-none");
     document.getElementById("settings-screen")?.classList.remove("d-none");
@@ -10,13 +31,15 @@ document.getElementById("start-game-btn")?.addEventListener("click", () => {
 });
 
 export function initGame() {
-    renderCards()
+    console.log(document.querySelectorAll(".card").length);
+    renderCards();
+    renderCardFront();
 }
 
 function renderCards() {
     const fieldRef = document.getElementById('field')
     if (fieldRef) {
-        for (let i = 15; i > 0; i--) {
+        for (let i = 32; i > 0; i--) {
             const card = document.createElement("button");
             card.classList.add("card");
             card.innerHTML = `
@@ -29,6 +52,21 @@ function renderCards() {
         }
     }
 }
+
+function renderCardFront() {
+    const cardBack = document.querySelectorAll<HTMLElement>(".card__face--back");
+        codingCards = codingCards.concat(codingCards);
+    cardBack.forEach((card, i) => {
+        card.style.backgroundImage = `url("${codingCards[i]}")`;
+    })
+}
+
+
+
+
+
+
+
 
 function changeTheme() {
     const previews = document.querySelectorAll(".theme-preview img");
@@ -80,8 +118,3 @@ updateSelection("theme", "theme", themes);
 updateSelection("player", "player", players);
 updateSelection("board", "board", boards);
 
-
-
-const cards = [
-    ""
-]
