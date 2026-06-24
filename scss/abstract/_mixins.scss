@@ -11,3 +11,9 @@
     cursor: pointer;
     transition: 0.2s;
 }
+
+@mixin game-grid($columns, $gap: 16px) {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+    gap: $gap;
+}
