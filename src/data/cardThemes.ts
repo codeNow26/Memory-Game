@@ -88,3 +88,22 @@ export const cardBacks = {
     da: "src/images/card-themes/DA-Theme/DA_card_front.png",
     foods: "src/images/card-themes/Food-Theme/food_card_front.png"
 };
+
+export const playerImages = {
+    coding: {
+        blue: "src/images/card-themes/Coding-Theme/blue_player.png",
+        orange: "src/images/card-themes/Coding-Theme/orange_player.png",
+    },
+    gaming: {
+        blue: "src/images/card-themes/Gaming-Theme/blue_player.png",
+        orange: "src/images/card-themes/Gaming-Theme/orange_player.png",
+    },
+    foods: {
+        blue: "src/images/card-themes/Food-Theme/blue_player.png",
+        orange: "src/images/card-themes/Food-Theme/orange_player.png",
+    },
+    da: {
+        blue: "src/images/card-themes/DA-Theme/blue_player.png",
+        orange: "src/images/card-themes/DA-Theme/orange_player.png",
+    },
+};

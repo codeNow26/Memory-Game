@@ -1,10 +1,10 @@
-import { codingCards, gamingCards, DACards, foodCards, cardBacks } from "./data/cardThemes";
-
-function initGame() {
-    renderCards(selectedBoard);
-    renderCardFront();
-    renderCardBack();
-}
+import { codingCards, gamingCards, DACards, foodCards, cardBacks, playerImages } from "./data/cardThemes";
+const fieldRef = document.getElementById('field');
+let firstCard = null;
+let secondCard = null;
+document.getElementById("exit-select-btn")?.addEventListener("click", exitGame);
+document.getElementById("exit-btn")?.addEventListener("click", showExitScreen);
+document.getElementById("back-btn")?.addEventListener("click", backToGame);
 
 document.getElementById("start-btn")?.addEventListener("click", () => {
     document.getElementById("start-screen")?.classList.add("d-none");
@@ -17,14 +17,60 @@ document.getElementById("start-game-btn")?.addEventListener("click", () => {
     initGame();
 });
 
-const fieldRef = document.getElementById('field');
+function initGame() {
+    const images = getCardFrontImages(selectedBoard)
+    renderCards(selectedBoard);
+    renderCardFront(selectedBoard);
+    renderCardBack();
+    showCurrentPlayer();
+    showPlayerImages();
+}
 
 if (fieldRef) {
+    let isChecking = false;
+
     fieldRef.addEventListener("click", e => {
-        const card = (e.target as HTMLElement).closest(".card") as HTMLButtonElement;
+        if (isChecking === true) {
+            return;
+        }
+
+        let card = (e.target as HTMLElement).closest(".card") as HTMLButtonElement;
 
         if (card) {
-            card.classList.toggle("is-flipped");
+
+            if (card === firstCard) {
+                return;
+            }
+
+            card.classList.add("is-flipped");
+
+            if (!firstCard) {
+                firstCard = card;
+            } else {
+                secondCard = card;
+            }
+
+
+            if (firstCard && secondCard) {
+                 isChecking = true;
+                const firstCardImage = firstCard.getAttribute("data-card");
+                const secondCardImage = secondCard.getAttribute("data-card");
+
+                if (firstCardImage === secondCardImage) {
+                    firstCard = null;
+                    secondCard = null;
+                    isChecking = false;
+                } else {
+                    setTimeout(() => {
+                        firstCard.classList.remove("is-flipped");
+                        secondCard.classList.remove("is-flipped");
+
+                        firstCard = null;
+                        secondCard = null;
+                         isChecking = false;
+                    }, 1000);
+                }
+            }
         }
     });
 }
@@ -47,6 +93,21 @@ function renderCards(selectedBoard: number) {
     }
 }
 
+function getCardFrontImages(selectedBoard: number) {
+    const pairs = selectedBoard / 2;
+
+    const fronts = {
+        coding: codingCards,
+        gaming: gamingCards,
+        da: DACards,
+        foods: foodCards
+    };
+
+    const selectedImages = fronts[selectedTheme].slice(0, pairs);
+    return [...selectedImages, ...selectedImages.sort(() => Math.random() - 0.5)];
+
+}
+
 function renderCardBack() {
     const cardFaces = document.querySelectorAll<HTMLElement>(".card__face--front");
 
@@ -55,23 +116,14 @@ function renderCardBack() {
     });
 }
 
-function renderCardFront() {
-    const gamingFront = gamingCards.concat(gamingCards);
-    const daFront = DACards.concat(DACards);
-    const foodFront = foodCards.concat(foodCards);
-    const codingFront = codingCards.concat(codingCards);
-
-    const fronts = {
-        coding: codingFront,
-        gaming: gamingFront,
-        da: daFront,
-        foods: foodFront
-    };
-
+function renderCardFront(selectedBoard: number) {
+    const images = getCardFrontImages(selectedBoard);
     const cardFront = document.querySelectorAll<HTMLElement>(".card__face--back");
-    cardFront.forEach((card, i) => {
+    cardFront.forEach((card, i,) => {
 
-        card.style.backgroundImage = `url("${fronts[selectedTheme][i]}")`;
+        const cardElement = cardFront[i].closest(".card");
+        cardElement?.setAttribute("data-card", images[i]);
+        card.style.backgroundImage = `url("${images[i]}")`;
     })
 }
 
@@ -166,3 +218,38 @@ updateSelection("board", "board", boards);
 updateBoardSelection();
 updateThemeSelection();
 updatePlayerSelection()
+
+function exitGame() {
+    const exitScreen = document.getElementById("exit-select-screen");
+    exitScreen?.classList.remove("active");
+    document.getElementById("game-screen")?.classList.add("d-none");
+    document.getElementById("settings-screen")?.classList.remove("d-none");
+}
+
+function showExitScreen() {
+    const exitScreen = document.getElementById("exit-select-screen");
+    exitScreen?.classList.add("active");
+}
+
+function backToGame() {
+    const exitScreen = document.getElementById("exit-select-screen");
+    exitScreen?.classList.remove("active");
+}
+
+function showPlayerImages() {
+    const bluePlayerImg = document.getElementById("blue-player-img") as HTMLImageElement;
+    const orangePlayerImg = document.getElementById("orange-player-img") as HTMLImageElement;
+
+    bluePlayerImg.src = playerImages[selectedTheme].blue;
+    orangePlayerImg.src = playerImages[selectedTheme].orange;
+}
+
+function showCurrentPlayer() {
+    const currentPlayerImg = document.getElementById("current-player") as HTMLImageElement;
+    currentPlayerImg.src = playerImages[selectedTheme][selectedPlayer];
+}
+
+function switchPlayer() {
+    selectedPlayer = selectedPlayer === "blue" ? "orange" : "blue";
+    showCurrentPlayer();
+}

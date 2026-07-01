@@ -133,14 +133,19 @@
             <div class="game-header">
                 <div class="game-header__left">
                     <div>
-                        <span id="blue-score" class="game-header__score game-header__score--blue">Blue: 0</span>
-                        <span id="orange-score" class="game-header__score game-header__score--orange">Orange: 0</span>
+                        <span id="blue-score" class="game-header__score game-header__score--blue"><img
+                                id="blue-player-img">Blue: 0</span>
+                        <span id="orange-score" class="game-header__score game-header__score--orange"><img
+                                id="orange-player-img">Orange: 0</span>
                     </div>
 
                 </div>
 
-                <div class="game-header__center">Current player: <span id="current-player"></span></div>
-                <div class="game-header__right">
+                <div class="game-header__center">
+                    Current player:
+                    <img id="current-player" alt="Current Player">
+                </div>
+                <div id="exit-btn" class="game-header__right">
                     <div class="game-header__right-wrapper">
                         <img src="./src/images/icons/exit.png" alt="Exit-Icon">
                         <span>Exit Game</span>
@@ -148,9 +153,17 @@
                 </div>
             </div>
             <div class="field-wrapper">
+                <div id="exit-select-screen" class="exit-select-screen">
+                    <div class="exit-select-screen__content">
+                        <p style="text-align: center;">Are you sure you want to quit the game?</p>
+                        <div class="exit-select-screen__btns">
+                            <button id="back-btn" class="exit-select-screen__btns--back">Back to game</button>
+                            <button id="exit-select-btn" class="exit-select-screen__btns--exit">Exit game</button>
+                        </div>
+                    </div>
+                </div>
                 <section id="field" class="field">
-                    
-        </div>
+            </div>
     </section>
     </section>
 
