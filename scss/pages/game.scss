@@ -2,7 +2,6 @@
 
 body {
     margin: 0;
-
 }
 
 .game-wrapper {
@@ -31,6 +30,15 @@ body {
     margin: 0 auto;
 }
 
+.field--24 {
+    grid-template-columns: repeat(6, 120px);
+}
+
+.field--36 {
+    grid-template-columns: repeat(6, 120px);
+    grid-template-rows: repeat(6, 120px);
+}
+
 .game-header {
     display: flex;
     justify-content: space-between;
@@ -41,7 +49,7 @@ body {
         @include mixin.flex-center;
         gap: 20px;
         background-color: #86E9D633;
-        padding: 10px 40px;
+        padding: 20px 40px;
     }
 
     &__score {
@@ -93,16 +101,20 @@ body {
 }
 
 .exit-select-screen {
-    position: absolute;
+    position: fixed;
+    left: 50%;
+    top: 50%;
     width: 600px;
     height: 300px;
     background-color: white;
     z-index: 100;
-    transform: translate(0, -300%);
+    opacity: 0;
+    transform: translate(-50%, -250%);
     transition: transform 0.3s ease;
 
     &.active {
-        transform: translate(0%);
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 
     &__content {
@@ -148,4 +160,72 @@ body {
 
 .game-field-36 {
     @include mixin.game-grid(6, 8)
+}
+
+#game-over-text {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 100;
+}
+
+.game-over-screen {
+    @include mixin.flex-center;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: #303131;
+
+    h1 {
+        font-size: 10rem;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        color: #4DD5BC;
+        text-shadow: -3px -1px 0px rgba(255, 255, 255, 1.0),
+            -7px 0px 8px rgba(77, 213, 188, 0.5);
+
+    }
+
+    &__score {
+        font-size: 2rem;
+        color: white;
+    }
+}
+
+.winner-screen {
+    @include mixin.flex-center;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    background-color: #303131;
+
+    &__text {
+        font-size: 3rem;
+        color: white;
+    }
+
+    &__back-btn {
+        font-family: "Red Rose", serif;
+        font-size: 20px;
+        font-weight: 700;
+        border: 1px solid #4DD5BC;
+        margin: 12px;
+        padding: 20px 40px;
+        background: #86E9D633;
+        color: white;
+        cursor: pointer;
+    }
+
+    &__confetti {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 36%;
+    }
 }

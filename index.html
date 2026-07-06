@@ -129,46 +129,95 @@
 
 
     <section id="game-screen" class="game-screen d-none">
+
+        <div id="game-over-screen" class="game-over-screen d-none">
+            <h1>Game over</h1>
+            <p class="game-over-screen__score">Final score</p>
+            <div class="game-header__left">
+                <span class="game-header__score game-header__score--blue">
+                    <img id="game-over-blue-player-img">
+                    Blue:
+                    <span id="game-over-blue-score">0</span>
+                </span>
+
+                <span class="game-header__score game-header__score--orange">
+                    <img id="game-over-orange-player-img">
+                    Orange:
+                    <span id="game-over-orange-score">0</span>
+                </span>
+            </div>
+            <div id="game-over-text"></div>
+        </div>
+
+        <div id="winner-screen" class="winner-screen d-none" >
+            <img src="./src/images/card-themes/Coding-Theme/end-screens/Confetti.png" class="winner-screen__confetti">
+            <p class="winner-screen__text">The winner is</p>
+            <p id="winner-name"></p>
+            <img id="winner-img">
+            <button id="back-to-settings-btn" class="winner-screen__back-btn">Back to start</button>
+        </div>
+
         <div class="game-wrapper">
+
             <div class="game-header">
+
                 <div class="game-header__left">
                     <div>
-                        <span id="blue-score" class="game-header__score game-header__score--blue"><img
-                                id="blue-player-img">Blue: 0</span>
-                        <span id="orange-score" class="game-header__score game-header__score--orange"><img
-                                id="orange-player-img">Orange: 0</span>
-                    </div>
+                        <span class="game-header__score game-header__score--blue">
+                            <img id="blue-player-img">
+                            Blue:
+                            <span id="blue-score">0</span>
+                        </span>
 
+                        <span class="game-header__score game-header__score--orange">
+                            <img id="orange-player-img">
+                            Orange:
+                            <span id="orange-score">0</span>
+                        </span>
+                    </div>
                 </div>
 
                 <div class="game-header__center">
                     Current player:
                     <img id="current-player" alt="Current Player">
                 </div>
+
                 <div id="exit-btn" class="game-header__right">
                     <div class="game-header__right-wrapper">
                         <img src="./src/images/icons/exit.png" alt="Exit-Icon">
                         <span>Exit Game</span>
                     </div>
                 </div>
+
             </div>
+
             <div class="field-wrapper">
-                <div id="exit-select-screen" class="exit-select-screen">
-                    <div class="exit-select-screen__content">
-                        <p style="text-align: center;">Are you sure you want to quit the game?</p>
-                        <div class="exit-select-screen__btns">
-                            <button id="back-btn" class="exit-select-screen__btns--back">Back to game</button>
-                            <button id="exit-select-btn" class="exit-select-screen__btns--exit">Exit game</button>
-                        </div>
-                    </div>
-                </div>
-                <section id="field" class="field">
+                <section id="field" class="field"></section>
             </div>
-    </section>
+
+        </div>
+
+        <div id="exit-select-screen" class="exit-select-screen">
+            <div class="exit-select-screen__content">
+                <p style="text-align: center;">
+                    Are you sure you want to quit the game?
+                </p>
+
+                <div class="exit-select-screen__btns">
+                    <button id="back-btn" class="exit-select-screen__btns--back">
+                        Back to game
+                    </button>
+
+                    <button id="exit-select-btn" class="exit-select-screen__btns--exit">
+                        Exit game
+                    </button>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <section id="game-over-screen" class="d-none">
-
     </section>
 
 

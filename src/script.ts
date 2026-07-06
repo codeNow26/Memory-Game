@@ -1,13 +1,18 @@
 import { codingCards, gamingCards, DACards, foodCards, cardBacks, playerImages } from "./data/cardThemes";
 const fieldRef = document.getElementById('field');
-let firstCard = null;
-let secondCard = null;
+let firstCard: HTMLButtonElement | null = null;
+let secondCard: HTMLButtonElement | null = null;
 document.getElementById("exit-select-btn")?.addEventListener("click", exitGame);
 document.getElementById("exit-btn")?.addEventListener("click", showExitScreen);
 document.getElementById("back-btn")?.addEventListener("click", backToGame);
 
 document.getElementById("start-btn")?.addEventListener("click", () => {
     document.getElementById("start-screen")?.classList.add("d-none");
+    document.getElementById("settings-screen")?.classList.remove("d-none");
+});
+
+document.getElementById("back-to-settings-btn")?.addEventListener("click", () => {
+    document.getElementById("winner-screen")?.classList.add("d-none");
     document.getElementById("settings-screen")?.classList.remove("d-none");
 });
 
@@ -18,7 +23,6 @@ document.getElementById("start-game-btn")?.addEventListener("click", () => {
 });
 
 function initGame() {
-    const images = getCardFrontImages(selectedBoard)
     renderCards(selectedBoard);
     renderCardFront(selectedBoard);
     renderCardBack();
@@ -30,7 +34,7 @@ if (fieldRef) {
     let isChecking = false;
 
     fieldRef.addEventListener("click", e => {
-        if (isChecking === true) {
+        if (isChecking) {
             return;
         }
 
@@ -52,22 +56,31 @@ if (fieldRef) {
 
 
             if (firstCard && secondCard) {
-                 isChecking = true;
+
+                isChecking = true;
                 const firstCardImage = firstCard.getAttribute("data-card");
                 const secondCardImage = secondCard.getAttribute("data-card");
-
+                const first = firstCard
+                const second = secondCard
                 if (firstCardImage === secondCardImage) {
+                    addPlayerScore();
+
+                    if (areAllCardsFlipped()) {
+                        showGameOverScreen();
+                    }
+
                     firstCard = null;
                     secondCard = null;
                     isChecking = false;
                 } else {
+                    switchPlayer();
                     setTimeout(() => {
-                        firstCard.classList.remove("is-flipped");
-                        secondCard.classList.remove("is-flipped");
+                        first.classList.remove("is-flipped");
+                        second.classList.remove("is-flipped");
 
                         firstCard = null;
                         secondCard = null;
-                         isChecking = false;
+                        isChecking = false;
                     }, 1000);
                 }
             }
@@ -192,6 +205,8 @@ function updateBoardSelection() {
     });
 }
 
+// hier auswählen welche css class für die jeweilige Auswahl gesetzt werden soll. 24 für field-24 usw.
+
 function updateThemeSelection() {
     const themeInputs = document.querySelectorAll<HTMLInputElement>('input[name="theme"]');
 
@@ -224,6 +239,7 @@ function exitGame() {
     exitScreen?.classList.remove("active");
     document.getElementById("game-screen")?.classList.add("d-none");
     document.getElementById("settings-screen")?.classList.remove("d-none");
+    resetScores();
 }
 
 function showExitScreen() {
@@ -252,4 +268,56 @@ function showCurrentPlayer() {
 function switchPlayer() {
     selectedPlayer = selectedPlayer === "blue" ? "orange" : "blue";
     showCurrentPlayer();
+}
+
+let blueScore: number = 0;
+let orangeScore: number = 0;
+
+function addPlayerScore() {
+    if (selectedPlayer === "blue") {
+        blueScore++;
+        document.getElementById("blue-score")!.textContent = blueScore.toString();
+    } else {
+        orangeScore++;
+        document.getElementById("orange-score")!.textContent = orangeScore.toString();
+    }
+}
+
+function resetScores() {
+    blueScore = 0;
+    orangeScore = 0;
+    document.getElementById("blue-score")!.textContent = blueScore.toString();
+    document.getElementById("orange-score")!.textContent = orangeScore.toString();
+}
+
+function areAllCardsFlipped() {
+    const cards = document.querySelectorAll(".card");
+    return [...cards].every(card => card.classList.contains("is-flipped"));
+}
+
+function showGameOverScreen() {
+    showGameOver();
+    const gameOverScreen = document.getElementById("game-over-screen");
+    gameOverScreen?.classList.remove("d-none");
+
+    setTimeout(() => {
+        gameOverScreen?.classList.add("d-none");
+        showWinnerScreen();
+    }, 3000);
+}
+
+function showGameOver() {
+    const gameOverText = document.getElementById("game-over-text")!;
+    if (blueScore > orangeScore) {
+        gameOverText.textContent = "Blue Player Wins!";
+    } else if (orangeScore > blueScore) {
+        gameOverText.textContent = "Orange Player Wins!";
+    } else {
+        gameOverText.textContent = "It's a Tie!";
+    }
+}
+
+function showWinnerScreen() {
+    const winnerScreen = document.getElementById("winner-screen");
+    winnerScreen?.classList.remove("d-none");
 }
