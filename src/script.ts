@@ -23,11 +23,12 @@ document.getElementById("start-game-btn")?.addEventListener("click", () => {
 });
 
 function initGame() {
-    renderCards(selectedBoard);
-    renderCardFront(selectedBoard);
+    renderCards(selectedBoardSize);
+    renderCardFront(selectedBoardSize);
     renderCardBack();
     showCurrentPlayer();
     showPlayerImages();
+    changeBackground();
 }
 
 if (fieldRef) {
@@ -167,17 +168,25 @@ function changeTheme() {
 
 changeTheme();
 
+function changeBackground() {
+    const screen = document.getElementById("game-screen")!;
+
+    screen.classList.remove("game-screen--da", "game-screen--coding", "game-screen--gaming", "game-screen--foods");
+    screen.classList.add(`game-screen--${selectedTheme}`);
+}
+
 const themes = ["Code Theme", "Gaming Theme", "DA Theme", "Food Theme"];
 const players = ["Blue", "Orange"];
 const boards = ["16 Cards", "24 cards", "36 cards"]
-
-let selectedBoard = 16;
 
 type Theme = "coding" | "gaming" | "da" | "foods";
 let selectedTheme: Theme = "coding";
 
 type Player = "blue" | "orange";
 let selectedPlayer: Player = "blue"
+
+type Board = 16 | 24 | 36;
+let selectedBoardSize: Board = 16;
 
 function updateSelection(
     inputName: string,
@@ -200,12 +209,22 @@ function updateBoardSelection() {
 
     boardInputs.forEach((input) => {
         input.addEventListener("change", () => {
-            selectedBoard = Number(input.value);
+            selectedBoardSize = Number(input.value) as Board;
+            switchBoardSize();
         })
     });
+
 }
 
-// hier auswählen welche css class für die jeweilige Auswahl gesetzt werden soll. 24 für field-24 usw.
+function switchBoardSize() {
+    const field = document.getElementById("field");
+    if (!field) return;
+
+    field.classList.remove("field--16", "field--24", "field--36");
+    field.classList.add(`field--${selectedBoardSize}`);
+}
+
+
 
 function updateThemeSelection() {
     const themeInputs = document.querySelectorAll<HTMLInputElement>('input[name="theme"]');
@@ -255,9 +274,13 @@ function backToGame() {
 function showPlayerImages() {
     const bluePlayerImg = document.getElementById("blue-player-img") as HTMLImageElement;
     const orangePlayerImg = document.getElementById("orange-player-img") as HTMLImageElement;
+    const gameOverbluePlayerImg = document.getElementById("game-over-blue-player-img") as HTMLImageElement;
+    const gameOverorangePlayerImg = document.getElementById("game-over-orange-player-img") as HTMLImageElement;
 
     bluePlayerImg.src = playerImages[selectedTheme].blue;
     orangePlayerImg.src = playerImages[selectedTheme].orange;
+    gameOverbluePlayerImg.src = playerImages[selectedTheme].blue;
+    gameOverorangePlayerImg.src = playerImages[selectedTheme].orange;
 }
 
 function showCurrentPlayer() {
@@ -296,14 +319,16 @@ function areAllCardsFlipped() {
 }
 
 function showGameOverScreen() {
-    showGameOver();
-    const gameOverScreen = document.getElementById("game-over-screen");
-    gameOverScreen?.classList.remove("d-none");
+    // showGameOver();
+    // const gameOverScreen = document.getElementById("game-over-screen");
+    // gameOverScreen?.classList.remove("d-none");
 
-    setTimeout(() => {
-        gameOverScreen?.classList.add("d-none");
-        showWinnerScreen();
-    }, 3000);
+
+    // setTimeout(() => {
+    //     gameOverScreen?.classList.add("d-none");
+    showWinnerScreen();
+    // }, 3000);
+
 }
 
 function showGameOver() {
@@ -320,4 +345,24 @@ function showGameOver() {
 function showWinnerScreen() {
     const winnerScreen = document.getElementById("winner-screen");
     winnerScreen?.classList.remove("d-none");
+    showWinner();
 }
+
+function showWinner() {
+    const winnerImg = document.getElementById("winner-img") as HTMLImageElement;
+
+    if (blueScore > orangeScore) {
+        winnerImg.src = playerImages[selectedTheme].blue;
+    } else if (orangeScore > blueScore) {
+        winnerImg.src = playerImages[selectedTheme].orange;
+    } else {
+        winnerImg.src = playerImages[selectedTheme].draw;
+    }
+
+
+
+}
+
+document
+    .getElementById("game-over-test-btn")
+    ?.addEventListener("click", showGameOverScreen);

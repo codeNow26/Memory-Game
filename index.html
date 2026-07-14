@@ -14,13 +14,27 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Fira+Code:wght@300..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Red+Rose:wght@300..700&display=swap"
         rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Fira+Code:wght@300..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Orbitron:wght@400..900&family=Red+Rose:wght@300..700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Figtree:ital,wght@0,300..900;1,300..900&family=Fira+Code:wght@300..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Orbitron:wght@400..900&family=Red+Rose:wght@300..700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Figtree:ital,wght@0,300..900;1,300..900&family=Fira+Code:wght@300..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Klee+One&family=Orbitron:wght@400..900&family=Red+Rose:wght@300..700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <section id="start-screen" class="start-screen">
         <div class="start-screen-content">
-            <h2>It´s play time.</h2>
+            <h2>It's play time.</h2>
             <h1 id="h1_hallo">Ready to play?</h1>
             <div class="start-btn-container">
                 <button id="start-btn" class="start-btn">
@@ -131,29 +145,29 @@
     <section id="game-screen" class="game-screen d-none">
 
         <div id="game-over-screen" class="game-over-screen d-none">
-            <h1>Game over</h1>
+            <h1>GAME OVER</h1>
             <p class="game-over-screen__score">Final score</p>
             <div class="game-header__left">
                 <span class="game-header__score game-header__score--blue">
                     <img id="game-over-blue-player-img">
-                    Blue:
+                    <span class="game-header__score--text">Blue</span>
                     <span id="game-over-blue-score">0</span>
                 </span>
 
                 <span class="game-header__score game-header__score--orange">
                     <img id="game-over-orange-player-img">
-                    Orange:
+                    <span class="game-header__score--text">Orange</span>
                     <span id="game-over-orange-score">0</span>
                 </span>
             </div>
             <div id="game-over-text"></div>
         </div>
 
-        <div id="winner-screen" class="winner-screen d-none" >
+        <div id="winner-screen" class="winner-screen d-none">
             <img src="./src/images/card-themes/Coding-Theme/end-screens/Confetti.png" class="winner-screen__confetti">
             <p class="winner-screen__text">The winner is</p>
             <p id="winner-name"></p>
-            <img id="winner-img">
+            <img class="winner-screen__winner-img" id="winner-img">
             <button id="back-to-settings-btn" class="winner-screen__back-btn">Back to start</button>
         </div>
 
@@ -162,20 +176,21 @@
             <div class="game-header">
 
                 <div class="game-header__left">
-                    <div>
+                    <div class="game-header__left--wrapper">
                         <span class="game-header__score game-header__score--blue">
                             <img id="blue-player-img">
-                            Blue:
+                            <span class="game-header__score--text">Blue</span>
                             <span id="blue-score">0</span>
                         </span>
 
                         <span class="game-header__score game-header__score--orange">
                             <img id="orange-player-img">
-                            Orange:
+                            <span class="game-header__score--text">Orange</span>
                             <span id="orange-score">0</span>
                         </span>
                     </div>
                 </div>
+              <button id="game-over-test-btn">Game Over Screen Test</button>
 
                 <div class="game-header__center">
                     Current player:
@@ -184,7 +199,7 @@
 
                 <div id="exit-btn" class="game-header__right">
                     <div class="game-header__right-wrapper">
-                        <img src="./src/images/icons/exit.png" alt="Exit-Icon">
+                        <span class="exit-button__icon"></span>
                         <span>Exit Game</span>
                     </div>
                 </div>
