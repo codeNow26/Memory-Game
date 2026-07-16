@@ -106,7 +106,7 @@
                             <input type="radio" name="board" value="24"><span>24 cards</span>
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="board" value="36"><span>36 cards</span>
+                            <input type="radio" name="board" value="36"><span>+36 cards</span>
                         </label>
                     </div>
                 </div>
@@ -121,11 +121,11 @@
                         <img src="./src/images/themes/Theme Visual Foods.png" alt="Foods Theme">
                     </div>
                     <div class="selection-overview">
-                        <span id="theme" name="theme">Game theme</span>
+                        <span id="theme" name="theme">Code Theme</span>
                         <div class="selection-overview__divider"></div>
-                        <span id="player" name="player">Player</span>
+                        <span id="player" name="player">Blue</span>
                         <div class="selection-overview__divider"></div>
-                        <span id="board" name="board">Board size</span>
+                        <span id="board" name="board">16 Cards</span>
                         <button id="start-game-btn" class="selection-overview__start-game-btn">
                             <img class="start-icon" src="./src/images/icons/smart_display.png">
                             <span>Start</span>
@@ -165,7 +165,8 @@
 
         <div id="winner-screen" class="winner-screen d-none">
             <img src="./src/images/card-themes/Coding-Theme/end-screens/Confetti.png" class="winner-screen__confetti">
-            <p class="winner-screen__text">The winner is</p>
+            <p id="winner-text" class="winner-screen__text"></p>
+            <p id="draw-text" class="winner-screen__draw"></p>
             <p id="winner-name"></p>
             <img class="winner-screen__winner-img" id="winner-img">
             <button id="back-to-settings-btn" class="winner-screen__back-btn">Back to start</button>
@@ -190,7 +191,7 @@
                         </span>
                     </div>
                 </div>
-              <button id="game-over-test-btn">Game Over Screen Test</button>
+
 
                 <div class="game-header__center">
                     Current player:

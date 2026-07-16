@@ -4,6 +4,7 @@ body {
     margin: 0;
 }
 
+
 .game-wrapper {
     min-height: 100vh;
     margin: 0px 112px 0px 112px;
@@ -27,13 +28,17 @@ body {
         --game-over-color: #4DD5BC;
         --game-over-text-shadow: -3px -1px 0px rgba(255, 255, 255, 1.0),
             -7px 0px 8px rgba(77, 213, 188, 0.5);
-            --game-over-background-color:  #303131;
+        --game-over-background-color: #303131;
 
-             // Winner Overlay
-              --winner-color: #ED1B76;
+        // Winner Overlay
+        --winner-color: white;
         --winner-img: url("src/images/card-themes/Gaming-Theme/winner-icon.png");
-        --winner-background-color: linear-gradient(180deg, #294F60 0%, #2086B4 100%);
+        --winner-background-color: #303131;
         --confetti: block;
+        --winner-exit-bg: #4DD5BC33;
+        --winner-exit-border: 2px solid #4DD5BC;
+        --winner-exit-border-radius: 0px;
+        --winner-exit-color: white;
 
     }
 
@@ -60,10 +65,14 @@ body {
         --game-over-background-color: linear-gradient(180deg, #294F60 0%, #2086B4 100%);
 
         // Winner Overlay
-        --winner-color: #ED1B76;
+        --winner-color: white;
         --winner-img: url("src/images/card-themes/Gaming-Theme/winner-icon.png");
-        --winner-background-color: linear-gradient(180deg, #294F60 0%, #2086B4 100%);
+        --winner-background-color: #294F60;
         --confetti: none;
+        --winner-exit-bg: #294F60;
+        --winner-exit-border: 2px solid #ED1B76;
+        --winner-exit-border-radius: 12px;
+        --winner-exit-color: white;
     }
 
     &--da {
@@ -87,11 +96,15 @@ body {
         --game-over-text-shadow: 0;
         --game-over-background-color: linear-gradient(180deg, #294F60 0%, #2086B4 100%);
 
-         // Winner Overlay
-          --winner-color: #ED1B76;
+        // Winner Overlay
+        --winner-color: white;
         --winner-img: url("src/images/card-themes/Gaming-Theme/winner-icon.png");
         --winner-background-color: linear-gradient(180deg, #294F60 0%, #2086B4 100%);
         --confetti: none;
+        --winner-exit-bg: #BFE5F2;
+        --winner-exit-border: 1px solid #4DD5BC;
+        --winner-exit-border-radius: 12px;
+        --winner-exit-color: #1E7594;
     }
 
     &--foods {
@@ -108,17 +121,22 @@ body {
         background-color: #FFF9F2;
         --header-radius: 20px;
         --header-color: #F0E5D9;
-        
+
         // Exit-Overlay
-            --game-over-color: #FFFFFF;
+        --game-over-color: #FFFFFF;
         --game-over-text-shadow: 0;
         --game-over-background-color: #F3832D;
 
-         // Winner Overlay
-          --winner-color: #ED1B76;
+        // Winner Overlay
+        --winner-color: #F3832D;
         --winner-img: url("src/images/card-themes/Gaming-Theme/winner-icon.png");
-        --winner-background-color: linear-gradient(180deg, #294F60 0%, #2086B4 100%);
+        --winner-background-color: #FFFFFF;
         --confetti: none;
+        --winner-exit-bg: #F3832D;
+        --winner-exit-border: 0px solid #ED1B76;
+        --winner-exit-border-radius: 12px;
+        --winner-exit-color: white;
+        --draw-color: orange;
 
     }
 }
@@ -282,7 +300,12 @@ body {
             margin: 12px;
             padding: 20px 40px;
             color: #4DD5BC;
-            background: #86E9D624 14%;
+            background: #86E9D624  14%;
+
+            &:hover {
+                border: 2px solid #4DD5BC;
+                background: #ddfff8;
+            }
         }
 
         &--back {
@@ -290,6 +313,11 @@ body {
             padding: 20px 40px;
             background: #66CFBC;
             color: white;
+
+            &:hover {
+                border: 2px solid #4DD5BC;
+                background: #78e9d4;
+            }
         }
     }
 }
@@ -354,18 +382,22 @@ body {
 
     &__text {
         font-size: 3rem;
-        color: white;
+        color: var(--winner-color);
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-top: 70px;
     }
 
     &__back-btn {
         font-family: "Red Rose", serif;
         font-size: 20px;
         font-weight: 700;
-        border: 1px solid #4DD5BC;
-        margin: 12px;
+        border: var(--winner-exit-border);
+        border-radius: var(--winner-exit-border-radius);
+        margin-top: 70px;
         padding: 20px 40px;
-        background: #86E9D633;
-        color: white;
+        background: var(--winner-exit-bg);
+        color: var(--winner-exit-color);
         cursor: pointer;
     }
 
@@ -380,4 +412,25 @@ body {
     &__winner-img {
         background-image: var(--winner-img);
     }
+
+    &__draw {
+        font-size: 7rem;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        color: var(--game-over-color);
+        text-shadow: var(--game-over-text-shadow);
+    }
+}
+
+.blue-player {
+    color: #2BB1FF;
+}
+
+.orange-player {
+    color: #F58E39;
+}
+
+.draw-player {
+    color: var(--draw-color, var(--game-over-color));
+    text-shadow: var(--game-over-text-shadow);
 }

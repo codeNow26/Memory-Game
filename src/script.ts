@@ -69,7 +69,10 @@ if (fieldRef) {
                     if (areAllCardsFlipped()) {
                         showGameOverScreen();
                     }
-
+                    
+                    firstCard.disabled = true;
+                    secondCard.disabled = true;
+                    
                     firstCard = null;
                     secondCard = null;
                     isChecking = false;
@@ -118,8 +121,8 @@ function getCardFrontImages(selectedBoard: number) {
     };
 
     const selectedImages = fronts[selectedTheme].slice(0, pairs);
-    return [...selectedImages, ...selectedImages.sort(() => Math.random() - 0.5)];
-
+    const pairedImages = [...selectedImages, ...selectedImages];
+    return pairedImages.sort(() => Math.random() - 0.5);
 }
 
 function renderCardBack() {
@@ -156,15 +159,18 @@ function changeTheme() {
         });
 
         radio.addEventListener("mouseleave", () => {
+            previews.forEach((preview) => {
+                preview.classList.remove("active");
+            });
             previews[selectedImage].classList.add("active");
         });
+        radioInputs.forEach((radio, i) => {
+            radio.addEventListener("change", () => {
+                selectedImage = i;
+            })
+        });
     });
-    radioInputs.forEach((radio, i) => {
-        radio.addEventListener("change", () => {
-            selectedImage = i;
-        })
-    });
-};
+}
 
 changeTheme();
 
@@ -319,15 +325,15 @@ function areAllCardsFlipped() {
 }
 
 function showGameOverScreen() {
-    // showGameOver();
-    // const gameOverScreen = document.getElementById("game-over-screen");
-    // gameOverScreen?.classList.remove("d-none");
+    showGameOver();
+    const gameOverScreen = document.getElementById("game-over-screen");
+    gameOverScreen?.classList.remove("d-none");
 
 
-    // setTimeout(() => {
-    //     gameOverScreen?.classList.add("d-none");
+    setTimeout(() => {
+        gameOverScreen?.classList.add("d-none");
     showWinnerScreen();
-    // }, 3000);
+    }, 3000);
 
 }
 
@@ -350,19 +356,25 @@ function showWinnerScreen() {
 
 function showWinner() {
     const winnerImg = document.getElementById("winner-img") as HTMLImageElement;
+    const winnerText = document.getElementById("winner-text") as HTMLElement;
+    const playerText = document.getElementById("draw-text") as HTMLElement;
+    winnerText.innerHTML = "The winner is";
+    playerText.className = "winner-screen__draw";
 
     if (blueScore > orangeScore) {
-        winnerImg.src = playerImages[selectedTheme].blue;
+        winnerImg.src = playerImages[selectedTheme].blueWin;
+        playerText.innerHTML = "Blue Player";
+         playerText.classList.add("blue-player");
     } else if (orangeScore > blueScore) {
-        winnerImg.src = playerImages[selectedTheme].orange;
+        winnerImg.src = playerImages[selectedTheme].orangeWin;
+        playerText.innerHTML = "Orange Player";
+         playerText.classList.add("orange-player");
     } else {
         winnerImg.src = playerImages[selectedTheme].draw;
+        playerText.innerHTML = "DRAW";
+        winnerText.innerHTML = "It's a";
+           playerText.classList.add("draw-player");
     }
-
-
-
+    resetScores();
 }
 
-document
-    .getElementById("game-over-test-btn")
-    ?.addEventListener("click", showGameOverScreen);

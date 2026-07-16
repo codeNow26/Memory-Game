@@ -94,20 +94,29 @@ export const playerImages = {
         blue: "src/images/card-themes/Coding-Theme/blue_player.png",
         orange: "src/images/card-themes/Coding-Theme/orange_player.png",
         draw: "src/images/card-themes/Coding-Theme/draw.png",
+        blueWin: "src/images/card-themes/Coding-Theme/code_blue_win.png",
+        orangeWin: "src/images/card-themes/Coding-Theme/code_orange_win.png",
     },
     gaming: {
         blue: "src/images/card-themes/Gaming-Theme/blue_player.png",
         orange: "src/images/card-themes/Gaming-Theme/orange_player.png",
         draw: "src/images/card-themes/Gaming-Theme/draw_gaming.png",
+        blueWin: "src/images/card-themes/Gaming-Theme/gaming_blue_win.png",
+        orangeWin: "src/images/card-themes/Gaming-Theme/gaming_orange_win.png",
+
     },
     foods: {
         blue: "src/images/card-themes/Food-Theme/blue_player.png",
         orange: "src/images/card-themes/Food-Theme/orange_player.png",
         draw: "src/images/card-themes/Food-Theme/draw_food.png",
+        blueWin: "src/images/card-themes/Food-Theme/food_blue_win.png",
+        orangeWin: "src/images/card-themes/Food-Theme/food_orange_win.png",
     },
     da: {
         blue: "src/images/card-themes/DA-Theme/blue_player.png",
         orange: "src/images/card-themes/DA-Theme/orange_player.png",
         draw: "src/images/card-themes/DA-Theme/draw_da.png",
+        blueWin: "src/images/card-themes/DA-Theme/da_blue_win.png",
+        orangeWin: "src/images/card-themes/DA-Theme/da_orange_win.png",
     },
 };
