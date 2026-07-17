@@ -1,0 +1,37 @@
+@use "../abstract/mixins" as mixin;
+
+.field {
+    display: grid;
+    max-width: 1200px;
+    grid-template-columns: repeat(4, 120px);
+    grid-template-rows: repeat(4, 120px);
+    gap: 16px;
+    margin: 0 auto;
+
+    &--16 {
+        grid-template-columns: repeat(4, 120px);
+        grid-template-rows: repeat(4, 120px);
+    }
+
+    &--24 {
+        grid-template-columns: repeat(6, 120px);
+        grid-template-rows: repeat(4, 120px);
+    }
+
+    &--36 {
+        grid-template-columns: repeat(6, 120px);
+        grid-template-rows: repeat(6, 120px);
+    }
+}
+
+// .game-field-16 {
+//     @include mixin.game-grid(4, 16)
+// }
+
+// .game-field-24 {
+//     @include mixin.game-grid(5, 12)
+// }
+
+// .game-field-36 {
+//     @include mixin.game-grid(6, 8)
+// }

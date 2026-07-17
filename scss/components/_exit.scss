@@ -1,0 +1,60 @@
+.exit-select-screen {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 600px;
+    height: 300px;
+    background-color: white;
+    z-index: 100;
+    opacity: 0;
+    transform: translate(-50%, -250%);
+    transition: transform 0.3s ease;
+
+    &.active {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    &__btns {
+        button {
+            font-family: "Red Rose", serif;
+            font-size: 20px;
+            font-weight: 700;
+            border: 2px solid #4DD5BC;
+            cursor: pointer;
+        }
+
+        &--exit {
+            margin: 12px;
+            padding: 20px 40px;
+            color: #4DD5BC;
+            background: #86E9D624  14%;
+
+            &:hover {
+                border: 2px solid #4DD5BC;
+                background: #ddfff8;
+            }
+        }
+
+        &--back {
+            margin: 12px;
+            padding: 20px 40px;
+            background: #66CFBC;
+            color: white;
+
+            &:hover {
+                border: 2px solid #4DD5BC;
+                background: #78e9d4;
+            }
+        }
+    }
+}
+

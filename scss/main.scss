@@ -1,4 +1,14 @@
+@use "./base/global";
+
 @use "./components/card";
+@use "./components/game-header";
+@use "./components/game-field";
+@use "./components/game-over";
+@use "./components/winner-screen";
+@use "./components/exit";
+
+@use "./themes/game-themes";
+
 @use "./pages/start";
 @use "./pages/settings";
 @use "./pages/game.scss";

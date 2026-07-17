@@ -1,16 +1,11 @@
 @use "../abstract/mixins" as mixin;
 
-body {
-    font-family: "Red Rose", serif;
-}
-
 .start-screen {
     @include mixin.flex-center;
     position: relative;
     color: white;
     min-height: 100vh;
     background-color: #303131;
-
 
     h1 {
         font-size: 140px;

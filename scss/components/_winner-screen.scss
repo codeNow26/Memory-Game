@@ -1,0 +1,52 @@
+@use "../abstract/mixins" as mixin;
+
+.winner-screen {
+    @include mixin.flex-center;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    background: var(--winner-background-color);
+
+    &__text {
+        font-size: 3rem;
+        color: var(--winner-color);
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-top: 70px;
+    }
+
+    &__back-btn {
+        font-family: "Red Rose", serif;
+        font-size: 20px;
+        font-weight: 700;
+        border: var(--winner-exit-border);
+        border-radius: var(--winner-exit-border-radius);
+        margin-top: 70px;
+        padding: 20px 40px;
+        background: var(--winner-exit-bg);
+        color: var(--winner-exit-color);
+        cursor: pointer;
+    }
+
+    &__confetti {
+        display: var(--confetti);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 36%;
+    }
+
+    &__winner-img {
+        background-image: var(--winner-img);
+    }
+
+    &__draw {
+        font-size: 7rem;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        color: var(--game-over-color);
+        text-shadow: var(--game-over-text-shadow);
+    }
+}

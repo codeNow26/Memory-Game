@@ -1,0 +1,128 @@
+.game-screen {
+    &--coding {
+        --exit-bg: #4DD5BC33;
+        --exit-border: 2px solid #4DD5BC;
+        --exit-border-radius: 0px;
+        --exit-color: white;
+        --player-color: white;
+        --player-background: #86E9D633;
+        --exit-icon: url("/src/images/icons/exit-coding.svg");
+        background-color: #303131;
+        --header-radius: 0px;
+
+        // Exit-Overlay
+        --game-over-color: #4DD5BC;
+        --game-over-text-shadow: -3px -1px 0px rgba(255, 255, 255, 1.0),
+            -7px 0px 8px rgba(77, 213, 188, 0.5);
+        --game-over-background-color: #303131;
+
+        // Winner Overlay
+        --winner-color: white;
+        --winner-img: url("src/images/card-themes/Gaming-Theme/winner-icon.png");
+        --winner-background-color: #303131;
+        --confetti: block;
+        --winner-exit-bg: #4DD5BC33;
+        --winner-exit-border: 2px solid #4DD5BC;
+        --winner-exit-border-radius: 0px;
+        --winner-exit-color: white;
+
+    }
+
+    &--gaming {
+        --font: "Orbitron", sans-serif;
+        --font-weight: 700;
+        --exit-bg: #FD96C933;
+        --exit-border: 2px solid #E71C4F;
+        --exit-border-radius: 12px;
+        --exit-color: white;
+        --player-color: white;
+        --player-background: white;
+        --player-width: 50px;
+        --player-show: none;
+        --player-border-radius: 12px;
+        --exit-icon: url("/src/images/icons/exit-gaming.svg");
+        background: linear-gradient(180deg, #294F60 0%, #2086B4 100%);
+        --header-radius: 20px;
+        --header-color: #FD96C933;
+
+        // Exit-Overlay
+        --game-over-color: #ED1B76;
+        --game-over-text-shadow: 0;
+        --game-over-background-color: linear-gradient(180deg, #294F60 0%, #2086B4 100%);
+
+        // Winner Overlay
+        --winner-color: white;
+        --winner-img: url("src/images/card-themes/Gaming-Theme/winner-icon.png");
+        --winner-background-color: #294F60;
+        --confetti: none;
+        --winner-exit-bg: #294F60;
+        --winner-exit-border: 2px solid #ED1B76;
+        --winner-exit-border-radius: 12px;
+        --winner-exit-color: white;
+    }
+
+    &--da {
+        --font: "Figtree", sans-serif;
+        --font-weight: 700;
+        --exit-bg: #BFE5F2;
+        --exit-border: 0px;
+        --exit-border-radius: 12px;
+        --exit-color: #1E7594;
+        --player-color: #1E7594;
+        --player-background: #FFFFFF;
+        --player-border-radius: 12px;
+        --player-show: none;
+        --exit-icon: url("/src/images/icons/exit-da.svg");
+        background-color: #BFE5F2;
+        --header-radius: 20px;
+        --header-color: #F0F3F4;
+
+        // Exit-Overlay
+        --game-over-color: #FD5B4F;
+        --game-over-text-shadow: 0;
+        --game-over-background-color: linear-gradient(180deg, #294F60 0%, #2086B4 100%);
+
+        // Winner Overlay
+        --winner-color: white;
+        --winner-img: url("src/images/card-themes/Gaming-Theme/winner-icon.png");
+        --winner-background-color: linear-gradient(180deg, #294F60 0%, #2086B4 100%);
+        --confetti: none;
+        --winner-exit-bg: #BFE5F2;
+        --winner-exit-border: 1px solid #4DD5BC;
+        --winner-exit-border-radius: 12px;
+        --winner-exit-color: #1E7594;
+    }
+
+    &--foods {
+        --font: "Klee One", cursive;
+        --exit-bg: #FFF9F2;
+        --exit-border: 2px solid #F3832D;
+        --exit-border-radius: 12px;
+        --exit-color: #F3832D;
+        --player-color: #1E7594;
+        --player-background: #FFFFFF;
+        --player-show: none;
+        --player-border-radius: 12px;
+        --exit-icon: url("/src/images/icons/exit-foods.svg");
+        background-color: #FFF9F2;
+        --header-radius: 20px;
+        --header-color: #F0E5D9;
+
+        // Exit-Overlay
+        --game-over-color: #FFFFFF;
+        --game-over-text-shadow: 0;
+        --game-over-background-color: #F3832D;
+
+        // Winner Overlay
+        --winner-color: #F3832D;
+        --winner-img: url("src/images/card-themes/Gaming-Theme/winner-icon.png");
+        --winner-background-color: #FFFFFF;
+        --confetti: none;
+        --winner-exit-bg: #F3832D;
+        --winner-exit-border: 0px solid #ED1B76;
+        --winner-exit-border-radius: 12px;
+        --winner-exit-color: white;
+        --draw-color: orange;
+
+    }
+}
