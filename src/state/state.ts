@@ -1,5 +1,8 @@
 import type { Board, Player, Theme } from "../types/gameTypes";
 
+/**
+ * Stores the current state and settings of the game.
+ */
 export const gameState = {
     firstCard: null as HTMLButtonElement | null,
     secondCard: null as HTMLButtonElement | null,

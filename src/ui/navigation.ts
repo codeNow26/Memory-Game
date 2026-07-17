@@ -1,5 +1,8 @@
 import { resetScores } from "../game/player";
 
+/**
+ * Initializes the navigation button event listeners.
+ */
 export function initNavigation() {
     document.getElementById("exit-select-btn")
         ?.addEventListener("click", exitGame);
@@ -11,6 +14,9 @@ export function initNavigation() {
         ?.addEventListener("click", backToGame);
 }
 
+/**
+ * Exits the game, returns to the settings screen and resets the scores.
+ */
 function exitGame() {
     const exitScreen = document.getElementById("exit-select-screen");
     exitScreen?.classList.remove("active");
@@ -19,13 +25,18 @@ function exitGame() {
     resetScores();
 }
 
+/**
+ * Displays the exit confirmation screen.
+ */
 function showExitScreen() {
     const exitScreen = document.getElementById("exit-select-screen");
     exitScreen?.classList.add("active");
 }
 
+/**
+ * Closes the exit confirmation screen and returns to the game.
+ */
 function backToGame() {
     const exitScreen = document.getElementById("exit-select-screen");
     exitScreen?.classList.remove("active");
 }
-

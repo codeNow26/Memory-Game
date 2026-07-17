@@ -2,6 +2,9 @@ import { playerImages } from "../data/cardThemes";
 import { gameState } from "../state/state";
 import { resetScores } from "./player";
 
+/**
+ * Displays the game-over screen and then shows the winner screen.
+ */
 export function showGameOverScreen() {
     showGameOver();
     const gameOverScreen = document.getElementById("game-over-screen");
@@ -14,6 +17,9 @@ export function showGameOverScreen() {
 
 }
 
+/**
+ * Displays the game result based on the current scores.
+ */
 function showGameOver() {
     const gameOverText = document.getElementById("game-over-text")!;
     if (gameState.blueScore > gameState.orangeScore) {
@@ -25,12 +31,18 @@ function showGameOver() {
     }
 }
 
+/**
+ * Displays the winner screen and its content.
+ */
 function showWinnerScreen() {
     const winnerScreen = document.getElementById("winner-screen");
     winnerScreen?.classList.remove("d-none");
     showWinner();
 }
 
+/**
+ * Displays the winner or draw result and resets the scores.
+ */
 function showWinner() {
     const winnerImg = document.getElementById("winner-img") as HTMLImageElement;
     const winnerText = document.getElementById("winner-text") as HTMLElement;
@@ -41,6 +53,11 @@ function showWinner() {
     resetScores();
 }
 
+/**
+ * Resets the winner screen text and CSS classes.
+ * @param winnerText - The element displaying the winner heading.
+ * @param playerText - The element displaying the player or draw result.
+ */
 function resetWinnerScreen(
     winnerText: HTMLElement,
     playerText: HTMLElement
@@ -50,6 +67,12 @@ function resetWinnerScreen(
     playerText.className = "winner-screen__draw";
 }
 
+/**
+ * Sets the winner screen content based on the current scores.
+ * @param winnerImg - The image element displaying the result image.
+ * @param winnerText - The element displaying the winner heading.
+ * @param playerText - The element displaying the player or draw result.
+ */
 function setWinnerContent(
     winnerImg: HTMLImageElement,
     winnerText: HTMLElement,
@@ -71,6 +94,14 @@ function setWinnerContent(
     playerText.classList.add("draw-player");
 }
 
+/**
+ * Sets the image, label and CSS class for the winning player.
+ * @param image - The image element displaying the winner.
+ * @param text - The element displaying the winner label.
+ * @param imageKey - The key of the winner image.
+ * @param label - The winner label to display.
+ * @param className - The CSS class for the winning player.
+ */
 function setWinner(
     image: HTMLImageElement,
     text: HTMLElement,

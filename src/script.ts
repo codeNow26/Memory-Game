@@ -16,6 +16,9 @@ import { initSettings, changeBackground } from "./ui/settings";
 import { initThemePreview } from "./ui/themePreview";
 import { initNavigation } from "./ui/navigation";
 
+/**
+ * Initializes all event listeners and settings.
+ */
 function init() {
     initCardClickListener();
     initThemePreview();
@@ -42,6 +45,9 @@ document.getElementById("start-game-btn")?.addEventListener("click", () => {
     initGame();
 });
 
+/**
+ * Initializes the game with the selected settings.
+ */
 function initGame() {
     renderCards(gameState.selectedBoardSize);
     renderCardFront(gameState.selectedBoardSize);
